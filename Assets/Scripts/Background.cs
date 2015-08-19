@@ -5,7 +5,7 @@ public class Background : MonoBehaviour
 {
 	void Start () 
 	{
-		ResizeSpriteToScreen ();
+		//ResizeSpriteToScreen ();
 	}
 	
 	void ResizeSpriteToScreen() 
