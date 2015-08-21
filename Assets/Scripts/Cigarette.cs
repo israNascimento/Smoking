@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Cigarette : MonoBehaviour {
-
+public class Cigarette : MonoBehaviour 
+{
 	float current;
 	int numberOfCigarette;
 	void Start () 

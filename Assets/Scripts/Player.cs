@@ -4,19 +4,24 @@ using System.Collections;
 public class Player : MonoBehaviour 
 {
 	float speed;
-	bool canMove;
+	bool canMove, isWalking;
+	Animator animator;
 
 	void Start () 
 	{
 		this.speed = 0.03f;
 		this.canMove = true;
+		this.animator = GetComponent<Animator> ();
 	}
 
 	void FixedUpdate()
 	{
+		isWalking = false;
 		if (this.canMove) {
 			Movement ();
 		}
+
+		animator.SetBool ("isWalking", isWalking);
 	}
 
 	void Movement()
@@ -25,10 +30,12 @@ public class Player : MonoBehaviour
 		{
 			this.transform.Translate(-speed, 0, 0);
 			this.transform.localScale = new Vector3(1, 1, 1);
+			isWalking = true;
 		}
 
 		else if (Input.GetKey(KeyCode.RightArrow))
 		{
+			this.isWalking = true;
 			this.transform.Translate(speed, 0, 0);
 			this.transform.localScale = new Vector3(-1, 1, 1);
 		}

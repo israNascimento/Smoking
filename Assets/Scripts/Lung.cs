@@ -12,9 +12,11 @@ public class Lung : MonoBehaviour {
 		MUITO_DIFICIL
 	}
 	LUNG lung;
+
 	[SerializeField]
 	Sprite[] sprites;
 	SpriteRenderer renderer;
+	float time;
 
 	void Start ()
 	{
@@ -24,9 +26,38 @@ public class Lung : MonoBehaviour {
 	
 	void FixedUpdate () 
 	{
-		if (Input.GetKeyDown (KeyCode.Space)) 
+		if (MathManager.instance.GetTime(ref time, 60)) 
 		{
 			renderer.sprite = sprites [(int)++lung];
 		}
+	}
+}
+
+class MathManager
+{
+
+	private static MathManager mathManager;
+	public static MathManager instance
+	{
+
+		get
+        {
+		    if(mathManager == null)
+		    {
+			    mathManager = new MathManager();
+		    }
+	
+		    return mathManager;
+        }
+	}
+
+	public bool GetTime(ref float currentTime, float time)
+	{
+		currentTime += Time.deltaTime;
+		if (currentTime > time) {
+			currentTime = 0;
+			return true;
+		}
+		return false;
 	}
 }
