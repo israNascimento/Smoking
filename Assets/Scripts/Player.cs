@@ -3,14 +3,16 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
-	float speed;
-	bool canMove, isWalking;
+    public bool canMove;
+    float speed;
+	bool isWalking, isSit;
 	Animator animator;
 
 	void Start () 
 	{
 		this.speed = 0.03f;
 		this.canMove = true;
+        this.isSit = false;
 		this.animator = GetComponent<Animator> ();
 	}
 
@@ -21,7 +23,8 @@ public class Player : MonoBehaviour
 			Movement ();
 		}
 
-		animator.SetBool ("isWalking", isWalking);
+		animator.SetBool ("isWalking", this.isWalking);
+        animator.SetBool ("isSit", this.isSit);
 	}
 
 	void Movement()
@@ -63,7 +66,7 @@ public class Player : MonoBehaviour
 		{
 			if(Input.GetKeyDown(KeyCode.UpArrow))
 			{
-				GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+                this.isSit = !this.isSit;
 				this.canMove = !this.canMove;
 			}
 		}
