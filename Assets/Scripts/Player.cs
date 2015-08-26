@@ -3,25 +3,35 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
-	float speed;
-	bool canMove, isWalking;
+	const float TIME_TO_DIE = 180;
+	float speed, currentTime;
+	bool canMove, isWalking, isSit;
 	Animator animator;
 
 	void Start () 
 	{
 		this.speed = 0.03f;
 		this.canMove = true;
+		this.isSit = false;
 		this.animator = GetComponent<Animator> ();
 	}
 
 	void FixedUpdate()
 	{
 		isWalking = false;
-		if (this.canMove) {
+		currentTime += Time.deltaTime;
+		if (currentTime > TIME_TO_DIE) {
+			Debug.LogError("VOCE MORREU !!!!!!!");
+			this.canMove = false;
+		}
+
+		if (this.canMove) 
+		{
 			Movement ();
 		}
 
 		animator.SetBool ("isWalking", isWalking);
+		animator.SetBool ("isSit", isSit);
 	}
 
 	void Movement()
@@ -41,30 +51,15 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	void ResizeSpriteToScreen() 
-	{
-		SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
-		if (sr == null) return;
-		
-		transform.localScale = new Vector3(1,1,1);
-		
-		float width = sr.sprite.bounds.size.x;
-		float height = sr.sprite.bounds.size.y;
-		
-		float worldScreenHeight = (float)(Camera.main.orthographicSize * 2.0);
-		float worldScreenWidth = (float)worldScreenHeight / Screen.height * Screen.width;
-		
-		transform.localScale = new Vector3 (worldScreenWidth / width * 0.1f, worldScreenHeight / height *0.15f, 0.1f);
-	}
-
 	void OnTriggerStay2D(Collider2D collider)
 	{
 		if (collider.gameObject.tag.Equals ("Interactable")) 
 		{
 			if(Input.GetKeyDown(KeyCode.UpArrow))
 			{
-				GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+				//GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
 				this.canMove = !this.canMove;
+				this.isSit   = !this.isSit;
 			}
 		}
 	}

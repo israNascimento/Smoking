@@ -7,9 +7,7 @@ public class Lung : MonoBehaviour {
 	{
 		EASY,
 		NORMAL,
-		HARD,
-		VERY_HARD,
-		MUITO_DIFICIL
+		HARD
 	}
 	LUNG lung;
 
@@ -17,18 +15,25 @@ public class Lung : MonoBehaviour {
 	Sprite[] sprites;
 	SpriteRenderer renderer;
 	float time;
+	int currentID;
 
 	void Start ()
 	{
 		lung = LUNG.EASY;
 		renderer = GetComponent<SpriteRenderer> ();
+		currentID = 0;
 	}
 	
 	void FixedUpdate () 
 	{
-		if (MathManager.instance.GetTime(ref time, 60)) 
+		if (MathManager.instance.GetTime (ref time, 60) && currentID < 3) 
 		{
-			renderer.sprite = sprites [(int)++lung];
+			currentID++;
+			renderer.sprite = sprites [currentID];
+		} 
+		else
+		{
+			currentID = 0;
 		}
 	}
 }

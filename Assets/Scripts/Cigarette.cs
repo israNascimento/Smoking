@@ -5,9 +5,11 @@ public class Cigarette : MonoBehaviour
 {
 	float current;
 	int numberOfCigarette;
+	Animator anim;
 	void Start () 
 	{
 		current = 10;
+		anim = GetComponent<Animator> ();
 	}
 	
 	void FixedUpdate () 
@@ -18,6 +20,14 @@ public class Cigarette : MonoBehaviour
 			numberOfCigarette += 1;
 			current = 10;
 			Debug.LogWarning("NOVO CIGARRO! NUMERO DE CIGARROS CONSUMIDOS: " +numberOfCigarette);
+			anim.SetBool("cigaretteEnd", true);
+			StartCoroutine(changeCigarreteEnd());
 		}
+	}
+
+	IEnumerator changeCigarreteEnd()
+	{
+		yield return new WaitForSeconds(1f);
+		anim.SetBool ("cigaretteEnd", false);
 	}
 }
