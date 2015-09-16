@@ -18,7 +18,6 @@ public class CloudManager : MonoBehaviour
 		this.randNum = Random.Range (15, 20);
 		this.randCloud = Random.Range (0, 4);
 		this.cloudPosition = new Vector3 (-1, Random.Range (-0.2f, 0.41f), 1);
-		print (randCloud);
 	}
 
 	IEnumerator spawn()

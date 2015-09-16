@@ -6,7 +6,7 @@ public class Cigarette : MonoBehaviour
 	float current;
 	int numberOfCigarette;
 	Animator anim;
-	bool isReloading;
+	public static bool isReloading;
 
 	[SerializeField]
 	GameObject smokeGameObject;
@@ -29,7 +29,6 @@ public class Cigarette : MonoBehaviour
 		{
 			numberOfCigarette += 1;
 			current = 10;
-			Debug.LogWarning("NOVO CIGARRO! NUMERO DE CIGARROS CONSUMIDOS: " +numberOfCigarette);
 			p.canMove = false;
 			isReloading = true;
 			anim.SetBool("cigaretteEnd", true);
@@ -40,8 +39,8 @@ public class Cigarette : MonoBehaviour
 	IEnumerator changeCigarreteEnd()
 	{
 		yield return new WaitForSeconds(1f);
+		p.canMove  = true;
 		anim.SetBool ("cigaretteEnd", false);
-			p.canMove  = true;
 		isReloading = false;
 	}
 

@@ -3,10 +3,14 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
-	const float TIME_TO_DIE = 180;
+	const float TIME_TO_DIE = 999;
 	float speed, currentTime;
-	public bool canMove, isWalking, isSit;
+	public bool canMove, isWalking, isSit, isDead, jaCriei;
 	Animator animator;
+
+	FXManager fxManager;
+	[SerializeField]
+	GameObject instructionArrow, instructionUp, panel;
 
 	void Start () 
 	{
@@ -14,6 +18,9 @@ public class Player : MonoBehaviour
 		this.canMove = true;
 		this.isSit = false;
 		this.animator = GetComponent<Animator> ();
+
+		fxManager = GameObject.Find ("FXManager").GetComponent<FXManager> ();
+		StartCoroutine (Instructions ());
 	}
 
 	void FixedUpdate()
@@ -22,7 +29,7 @@ public class Player : MonoBehaviour
 		currentTime += Time.deltaTime;
 		if (currentTime > TIME_TO_DIE) 
 		{
-			this.canMove = false;
+			isDead = true;
 		}
 
 		if (this.canMove) 
@@ -32,6 +39,19 @@ public class Player : MonoBehaviour
 
 		animator.SetBool ("isWalking", isWalking);
 		animator.SetBool ("isSit", isSit);
+
+		if (isDead)
+		{
+			ChangeScene();
+		}
+	}
+
+	void ChangeScene()
+	{
+		if(!jaCriei)
+			fxManager.CreateFadeIn (panel, 0.005f, "Final");
+		
+		jaCriei = true;
 	}
 
 	void Movement()
@@ -55,11 +75,24 @@ public class Player : MonoBehaviour
 	{
 		if (collider.gameObject.tag.Equals ("Interactable")) 
 		{
-			if(Input.GetKeyDown(KeyCode.UpArrow))
+			if(Input.GetKeyDown(KeyCode.UpArrow) && !Cigarette.isReloading)
 			{
 				this.canMove = !this.canMove;
 				this.isSit   = !this.isSit;
 			}
 		}
+	}
+
+	IEnumerator Instructions()
+	{
+		yield return new WaitForSeconds (3);
+		fxManager.CreateFadeOut (this.instructionArrow, 0.05f);
+		fxManager.CreateFadeOut (this.instructionUp, 0.05f);
+	}
+
+	IEnumerator CreateFade()
+	{
+		yield return new WaitForSeconds (1);
+		fxManager.CreateFadeIn (panel, 0.05f, "Final");
 	}
 }

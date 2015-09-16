@@ -22,7 +22,6 @@ public class ParallaxLayer : MonoBehaviour
 	
 	void Update () 
 	{
-		print (speedX);
 		if (Input.GetKeyDown(KeyCode.LeftArrow))
 		{
 			speedX = -0.2f;
