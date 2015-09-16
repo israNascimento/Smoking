@@ -10,7 +10,7 @@ public class AUXGameObject : MonoBehaviour {
 	
 	void Update ()
 	{
-		this.gameObject.transform.position += new Vector3 (0.001f, speedY);
+		this.gameObject.transform.position += new Vector3 (0.005f, speedY);
 	}
 
 	IEnumerator changeSpeed()

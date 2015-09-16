@@ -26,7 +26,7 @@ public class Lung : MonoBehaviour {
 	
 	void FixedUpdate () 
 	{
-		if (MathManager.instance.GetTime (ref time, 60) && currentID < 3) 
+		if (MathManager.instance.GetTime (ref time, 30) && currentID < 3) 
 		{
 			currentID++;
 			renderer.sprite = sprites [currentID];

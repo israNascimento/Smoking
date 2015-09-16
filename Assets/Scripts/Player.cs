@@ -5,12 +5,12 @@ public class Player : MonoBehaviour
 {
 	const float TIME_TO_DIE = 180;
 	float speed, currentTime;
-	bool canMove, isWalking, isSit;
+	public bool canMove, isWalking, isSit;
 	Animator animator;
 
 	void Start () 
 	{
-		this.speed = 0.03f;
+		this.speed = 0.015f;
 		this.canMove = true;
 		this.isSit = false;
 		this.animator = GetComponent<Animator> ();
@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
 	{
 		isWalking = false;
 		currentTime += Time.deltaTime;
-		if (currentTime > TIME_TO_DIE) {
-			Debug.LogError("VOCE MORREU !!!!!!!");
+		if (currentTime > TIME_TO_DIE) 
+		{
 			this.canMove = false;
 		}
 
@@ -57,7 +57,6 @@ public class Player : MonoBehaviour
 		{
 			if(Input.GetKeyDown(KeyCode.UpArrow))
 			{
-				//GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
 				this.canMove = !this.canMove;
 				this.isSit   = !this.isSit;
 			}
