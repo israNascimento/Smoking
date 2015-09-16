@@ -12,6 +12,9 @@ public class MainCamera : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		this.transform.position = new Vector3 (this.player.transform.position.x, this.transform.position.y, this.transform.position.z);
+		if (this.player.transform.position.x > 0 && this.player.transform.position.x < 5)
+		{
+			this.transform.position = new Vector3 (this.player.transform.position.x, this.transform.position.y, this.transform.position.z);
+		}
 	}
 }
