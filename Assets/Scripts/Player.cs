@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
 	const float TIME_TO_DIE = 999;
 	float speed, currentTime;
-	public bool canMove, isWalking, isSit, isDead, jaCriei;
+	public bool canMove, isWalking, isSit, isDead, jaCriei, gameStart;
 	Animator animator;
 
 	FXManager fxManager;
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
 		fxManager = GameObject.Find ("FXManager").GetComponent<FXManager> ();
 		StartCoroutine (Instructions ());
+		StartCoroutine (GameStart ());
 	}
 
 	void FixedUpdate()
@@ -94,5 +95,11 @@ public class Player : MonoBehaviour
 	{
 		yield return new WaitForSeconds (1);
 		fxManager.CreateFadeIn (panel, 0.05f, "Final");
+	}
+
+	IEnumerator GameStart()
+	{
+		yield return new WaitForSeconds (10);
+		gameStart = true;
 	}
 }
