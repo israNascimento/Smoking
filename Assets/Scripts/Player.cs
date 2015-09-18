@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
-	const float TIME_TO_DIE = 999;
+	const float TIME_TO_DIE = 10;
 	float speed, currentTime;
 	public bool canMove, isWalking, isSit, isDead, jaCriei;
 	public static bool gameStart = false;

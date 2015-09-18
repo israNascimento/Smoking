@@ -4,20 +4,19 @@ using System.Collections;
 public class IAManager : MonoBehaviour {
 
 	public GameObject[] iasGameObject;
-	private int timeToInstance = 3;
+	private float timeToInstance = 5;
 	private float limitLeft;
 	private float limitRight;
 
 	void Start () 
 	{
 		StartCoroutine (InstanceIA ());
-		this.limitLeft  = GameObject.FindGameObjectWithTag ("LeftLimit").transform.position.x;
-		this.limitRight = GameObject.FindGameObjectWithTag ("RightLimit").transform.position.x;
 	}
 	
 	void Update () 
 	{
-		
+		this.limitLeft  = GameObject.FindGameObjectWithTag ("LeftLimit").transform.position.x;
+		this.limitRight = GameObject.FindGameObjectWithTag ("RightLimit").transform.position.x;
 	}
 
 	IEnumerator InstanceIA()
@@ -25,9 +24,19 @@ public class IAManager : MonoBehaviour {
 		while (true) 
 		{
 			yield return new WaitForSeconds(this.timeToInstance);
-		
+			if(Random.Range(0f, 3f) > 1.5f)
+			{
 				Instantiate(iasGameObject[Random.Range(0, this.iasGameObject.Length)],
-				            new Vector3(Random.Range(-8, this.limitLeft), -1.57f), Quaternion.identity);
+			            new Vector3(Random.Range(-6.75f, this.limitLeft), -1.57f), Quaternion.identity);
+			}
+
+			else
+			{
+				Instantiate(iasGameObject[Random.Range(0, this.iasGameObject.Length)],
+				            new Vector3(Random.Range(this.limitRight, 20f), -1.57f), Quaternion.identity);
+			}
+
+			this.timeToInstance -= 0.03f;
 
 		}
 	}
