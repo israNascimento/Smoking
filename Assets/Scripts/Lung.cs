@@ -26,6 +26,8 @@ public class Lung : MonoBehaviour {
 	
 	void FixedUpdate () 
 	{
+		if (!Player.gameStart)
+			return;
 		if (MathManager.instance.GetTime (ref time, 30) && currentID < 3) 
 		{
 			currentID++;

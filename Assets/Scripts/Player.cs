@@ -28,6 +28,9 @@ public class Player : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		if (!gameStart)
+			return;
+
 		isWalking = false;
 		currentTime += Time.deltaTime;
 		if (currentTime > TIME_TO_DIE) 
