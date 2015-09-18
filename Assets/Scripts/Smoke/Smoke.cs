@@ -4,9 +4,13 @@ using System.Collections;
 public class Smoke : MonoBehaviour 
 {
 	public GameObject rotation;
-	void Start ()
+	TrailRenderer trail;
+	
+	void Start () 
 	{
-
+		this.trail = this.gameObject.GetComponent<TrailRenderer> ();
+		trail.sortingLayerName = "Game";
+		trail.sortingOrder = 10;	
 	}
 	
 	void Update () 

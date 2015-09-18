@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
-	const float TIME_TO_DIE = 10;
+	const float TIME_TO_DIE = 200;
 	float speed, currentTime;
 	public bool canMove, isWalking, isSit, isDead, jaCriei;
 	public static bool gameStart = false;
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
 
 	IEnumerator GameStart()
 	{
-		yield return new WaitForSeconds (22);
+		yield return new WaitForSeconds (22.5f);
 		gameStart = true;
 	}
 }

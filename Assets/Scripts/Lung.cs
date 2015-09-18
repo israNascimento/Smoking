@@ -13,6 +13,7 @@ public class Lung : MonoBehaviour {
 
 	[SerializeField]
 	Sprite[] sprites;
+	public Sprite Pulmaofodido;
 	SpriteRenderer renderer;
 	float time;
 	int currentID;
@@ -23,8 +24,9 @@ public class Lung : MonoBehaviour {
 		renderer = GetComponent<SpriteRenderer> ();
 		currentID = 0;
 	}
-	
-	void FixedUpdate () 
+
+
+	void PlayerObject()
 	{
 		if (!Player.gameStart)
 			return;
@@ -36,6 +38,37 @@ public class Lung : MonoBehaviour {
 		else
 		{
 			currentID = 0;
+		}
+	}
+
+	public void NPC_Damage()
+	{
+		currentID++;
+		renderer.sprite = sprites [currentID];
+	}
+
+	void NPC_Object()
+	{
+		if (this.currentID > 4)
+		{
+			this.gameObject.GetComponent<SpriteRenderer>().sprite = Pulmaofodido;
+		}
+	}
+
+	void FixedUpdate () 
+	{
+		if (this.gameObject.name.Equals("NPC"))
+		{
+			print (this.currentID);
+		}
+		switch(this.gameObject.name)
+		{
+		case "Character":
+			PlayerObject();
+			break;
+		case "NPC":
+			NPC_Object();
+			break;
 		}
 	}
 }
