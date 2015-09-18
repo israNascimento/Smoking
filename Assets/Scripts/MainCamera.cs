@@ -19,7 +19,7 @@ public class MainCamera : MonoBehaviour
 			this.transform.position = new Vector3 (this.bus.transform.position.x, this.transform.position.y, this.transform.position.z);
 		}
 
-		else if (this.player.transform.position.x > 0 && this.player.transform.position.x < 9.65f)
+		else if (this.player.transform.position.x > -5.8f && this.player.transform.position.x < 18.5f)
 		{
 			this.transform.position = new Vector3 (this.player.transform.position.x, this.transform.position.y, this.transform.position.z);
 		}
