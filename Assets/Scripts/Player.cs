@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 	const float TIME_TO_DIE = 999;
 	float speed, currentTime;
 	public bool canMove, isWalking, isSit, isDead, jaCriei;
-    public static bool gameStart;
+	public static bool gameStart = false;
 	Animator animator;
 
 	FXManager fxManager;
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
 
 	IEnumerator GameStart()
 	{
-		yield return new WaitForSeconds (23);
+		yield return new WaitForSeconds (22);
 		gameStart = true;
 	}
 }
