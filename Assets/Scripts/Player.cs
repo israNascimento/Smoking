@@ -45,7 +45,16 @@ public class Player : MonoBehaviour
 
 		animator.SetBool ("isWalking", isWalking);
 		animator.SetBool ("isSit", isSit);
-
+        if (isSit)
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = 8;
+            gameObject.transform.FindChild("Lung").GetComponent<SpriteRenderer>().sortingOrder = 9;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = 12;
+            gameObject.transform.FindChild("Lung").GetComponent<SpriteRenderer>().sortingOrder = 13;
+        }
 		if (isDead)
 		{
 			ChangeScene();

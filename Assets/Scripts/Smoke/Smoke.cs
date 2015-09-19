@@ -15,6 +15,6 @@ public class Smoke : MonoBehaviour
 	
 	void Update () 
 	{
-		gameObject.transform.RotateAround (rotation.transform.position, Vector3.forward, 200 * Time.deltaTime);
+		gameObject.transform.RotateAround (rotation.transform.position, Vector3.forward, 200 * Time.deltaTime);//
 	}
 }

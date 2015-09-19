@@ -36,7 +36,7 @@ public class IAManager : MonoBehaviour {
 				            new Vector3(Random.Range(this.limitRight, 24), -1.57f), Quaternion.identity);
 			}
 
-			this.timeToInstance -= 0.1f;
+			this.timeToInstance -= 0.05f;
 
 		}
 	}
