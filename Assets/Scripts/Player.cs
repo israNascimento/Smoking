@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour 
 {
-	const float TIME_TO_DIE = 200;
+	const float TIME_TO_DIE = 180;
 	float speed, currentTime;
 	public bool canMove, isWalking, isSit, isDead, jaCriei;
 	public static bool gameStart = false;
@@ -79,14 +79,16 @@ public class Player : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D collider)
 	{
-		if (collider.gameObject.tag.Equals ("Interactable")) 
-		{
+
+        if(collider.gameObject.tag.Equals("Interactable"))
+        {
 			if(Input.GetKeyDown(KeyCode.UpArrow) && !Cigarette.isReloading)
 			{
 				this.canMove = !this.canMove;
 				this.isSit   = !this.isSit;
 			}
-		}
+        }
+		
 	}
 
 	IEnumerator Instructions()

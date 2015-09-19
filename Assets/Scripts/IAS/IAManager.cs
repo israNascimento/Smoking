@@ -27,16 +27,16 @@ public class IAManager : MonoBehaviour {
 			if(Random.Range(0f, 3f) > 1.5f)
 			{
 				Instantiate(iasGameObject[Random.Range(0, this.iasGameObject.Length)],
-			            new Vector3(Random.Range(-6.75f, this.limitLeft), -1.57f), Quaternion.identity);
+			            new Vector3(Random.Range(-8.87f, this.limitLeft), -1.57f), Quaternion.identity);
 			}
 
 			else
 			{
 				Instantiate(iasGameObject[Random.Range(0, this.iasGameObject.Length)],
-				            new Vector3(Random.Range(this.limitRight, 20f), -1.57f), Quaternion.identity);
+				            new Vector3(Random.Range(this.limitRight, 24), -1.57f), Quaternion.identity);
 			}
 
-			this.timeToInstance -= 0.03f;
+			this.timeToInstance -= 0.1f;
 
 		}
 	}

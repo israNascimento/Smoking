@@ -17,7 +17,7 @@ public class Cigarette : MonoBehaviour
 	void Start () 
 	{
 		p = GameObject.Find ("Character").GetComponent<Player> ();
-		current = 10;
+		current = 25;
 		anim = GetComponent<Animator> ();
 		StartCoroutine (InstatiateSmoke ());
 	}
@@ -28,7 +28,7 @@ public class Cigarette : MonoBehaviour
 		if (current <= 0 && p.isSit == false) 
 		{
 			numberOfCigarette += 1;
-			current = 10;
+			current = 25;
 			p.canMove = false;
 			isReloading = true;
 			anim.SetBool("cigaretteEnd", true);
@@ -47,7 +47,7 @@ public class Cigarette : MonoBehaviour
 	IEnumerator InstatiateSmoke()
 	{
 		while (true) {
-			yield return new WaitForSeconds(6);
+			yield return new WaitForSeconds(5);
 			Instantiate(smokeGameObject, positionToInstance.position, Quaternion.identity);
 		}
 	}
