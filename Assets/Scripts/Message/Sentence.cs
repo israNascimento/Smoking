@@ -25,6 +25,16 @@ public class Sentence : MonoBehaviour
 		this.audio.loop = true;
 	}
 
+    void Update()
+    {
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+    }
+
 	void Reset()
 	{
 		t.text = "";
@@ -34,7 +44,7 @@ public class Sentence : MonoBehaviour
 		}
 		else
 		{
-			text = "Quando fumamos, prejudicamos a todos em nossa volta. Sua família corre o mesmo risco que você. Diga não ao fumo.";
+            text = "Quando fumamos, prejudicamos a todos em nossa volta. O fumo é nocivo a todos, diga não ao tabagismo. \n\n\n Aperte \"ESC\" para sair.";
 		}
 		c = text.ToCharArray ();
 		i = 0;

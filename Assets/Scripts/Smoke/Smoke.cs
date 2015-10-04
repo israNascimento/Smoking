@@ -10,11 +10,11 @@ public class Smoke : MonoBehaviour
 	{
 		this.trail = this.gameObject.GetComponent<TrailRenderer> ();
 		trail.sortingLayerName = "Game";
-		trail.sortingOrder = 10;	
+		trail.sortingOrder = 19;	
 	}
 	
 	void Update () 
 	{
-		gameObject.transform.RotateAround (rotation.transform.position, Vector3.forward, 200 * Time.deltaTime);//
+		gameObject.transform.RotateAround (rotation.transform.position, Vector3.forward, 100 * Time.deltaTime);//
 	}
 }

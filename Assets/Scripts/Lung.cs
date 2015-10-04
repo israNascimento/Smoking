@@ -30,7 +30,7 @@ public class Lung : MonoBehaviour {
 	{
 		if (!Player.gameStart)
 			return;
-		if (MathManager.instance.GetTime (ref time, 40) && currentID < 4) 
+		if (MathManager.instance.GetTime (ref time, 70) && currentID < 2) 
 		{
 			currentID++;
 			renderer.sprite = sprites [currentID];
@@ -45,10 +45,10 @@ public class Lung : MonoBehaviour {
 
 	void NPC_Object()
 	{
-		if (this.currentID == 4)
+	/*	if (this.currentID == 4)
 		{
 			this.gameObject.GetComponent<SpriteRenderer>().sprite = badLung;
-		}
+		}*/
 	}
 
 	void FixedUpdate () 
@@ -62,12 +62,12 @@ public class Lung : MonoBehaviour {
 		case "Character":
 				PlayerObject();
 			break;
-		case "NPC":
+	/*	case "NPC":
 				NPC_Object();
 			break;
 		default:
 			PlayerObject();
-			break;
+			break;*/
 		}
 	}
 }

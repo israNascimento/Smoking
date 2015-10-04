@@ -21,7 +21,6 @@ public class MainCamera : MonoBehaviour
 
 		else if (this.player.transform.position.x > -5.8f && this.player.transform.position.x < 18.5f)
 		{
-            print(transform.position);
 			this.transform.position = new Vector3 (this.player.transform.position.x, this.transform.position.y, this.transform.position.z);
 		}
 	}

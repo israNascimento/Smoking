@@ -47,13 +47,13 @@ public class Player : MonoBehaviour
 		animator.SetBool ("isSit", isSit);
         if (isSit)
         {
-            GetComponent<SpriteRenderer>().sortingOrder = 8;
-            gameObject.transform.FindChild("Lung").GetComponent<SpriteRenderer>().sortingOrder = 9;
+            GetComponent<SpriteRenderer>().sortingOrder = 14;
+            gameObject.transform.FindChild("Lung").GetComponent<SpriteRenderer>().sortingOrder = 15;
         }
         else
         {
-            GetComponent<SpriteRenderer>().sortingOrder = 12;
-            gameObject.transform.FindChild("Lung").GetComponent<SpriteRenderer>().sortingOrder = 13;
+            GetComponent<SpriteRenderer>().sortingOrder = 20;
+            gameObject.transform.FindChild("Lung").GetComponent<SpriteRenderer>().sortingOrder = 21;
         }
 		if (isDead)
 		{

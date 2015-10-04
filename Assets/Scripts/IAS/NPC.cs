@@ -5,7 +5,7 @@ public class NPC : MonoBehaviour
 {
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (this.gameObject.GetComponent<Lung>().currentID < 4)
+		if (this.gameObject.GetComponent<Lung>().currentID < 1)
 		{
 			if (c.gameObject.tag.Equals("Smoke"))
 			{

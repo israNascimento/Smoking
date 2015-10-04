@@ -32,6 +32,8 @@ public class Cigarette : MonoBehaviour
 			p.canMove = false;
 			isReloading = true;
 			anim.SetBool("cigaretteEnd", true);
+         //   GetComponent<AudioSource>().Play();
+            audio.Play();
 			StartCoroutine(changeCigarreteEnd());
 		}
 	}
@@ -47,7 +49,7 @@ public class Cigarette : MonoBehaviour
 	IEnumerator InstatiateSmoke()
 	{
 		while (true) {
-			yield return new WaitForSeconds(5);
+			yield return new WaitForSeconds(3.5f);
 			Instantiate(smokeGameObject, positionToInstance.position, Quaternion.identity);
 		}
 	}

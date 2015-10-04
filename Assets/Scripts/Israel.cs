@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Israel : MonoBehaviour
 {
-    private float speed;
+    public float speed;
     private string direction;
 	void Start () 
 	{
-        speed = 0.01f;
-        if (Random.Range(0, 2) > 3)
+       
+        if (Random.Range(0, 6) > 3)
         {
             direction = "Right";
         }
@@ -32,6 +32,17 @@ public class Israel : MonoBehaviour
                 this.transform.Translate(-speed, 0, 0);
                 this.transform.localScale = new Vector3(1, 1, 1);
                 break;
+        }
+	}
+
+    void OnTriggerEnter2D(Collider2D c)
+	{
+        if (c.gameObject.name.Equals("MapLimit"))
+        {
+            if (direction == "Right")
+                direction = "Left";
+            else
+                direction = "Right";
         }
 	}
 }
